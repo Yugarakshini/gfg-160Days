@@ -1,0 +1,22 @@
+class Solution {
+    public int getSecondLargest(int[] arr) {
+        if (arr.length < 2) { // Array must have at least two elements
+            return -1;
+        }
+        
+        int first = Integer.MIN_VALUE; // Largest value
+        int second = Integer.MIN_VALUE; // Second-largest value
+        
+        for (int num : arr) {
+            if (num > first) { // Found a new largest
+                second = first; // Previous largest becomes second largest
+                first = num;
+            } else if (num > second && num != first) { // Found a new second largest
+                second = num;
+            }
+        }
+        
+        // If second is still the initial value, return -1
+        return (second == Integer.MIN_VALUE) ? -1 : second;
+    }
+}
