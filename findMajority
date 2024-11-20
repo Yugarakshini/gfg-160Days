@@ -1,0 +1,23 @@
+class Solution {
+    // Function to find the majority elements in the array
+    public List<Integer> findMajority(int[] nums) {
+        // Your code goes here.
+        List<Integer> result = new ArrayList<>();
+        Map<Integer, Integer> countMap = new HashMap<>();
+        int n = nums.length;
+
+        // Count the frequency of each element
+        for (int i = 0; i < n; i++) {
+            countMap.put(nums[i], countMap.getOrDefault(nums[i], 0) + 1);
+        }
+
+        // Check for elements with a count greater than n/3
+        for (Map.Entry<Integer, Integer> entry : countMap.entrySet()) {
+            if (entry.getValue() > n / 3) {
+                result.add(entry.getKey());
+            }
+        }
+
+        return result;
+    }
+}
