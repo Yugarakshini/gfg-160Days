@@ -1,0 +1,26 @@
+class Solution {
+    public List<int[]> mergeOverlap(int[][] arr) {
+        // Sort intervals based on start values
+        Arrays.sort(arr, (a, b) -> Integer.compare(a[0], b[0]));
+
+        // Index of the last merged 
+        int resIdx = 0; 
+
+        for (int i = 1; i < arr.length; i++) {
+            
+            // If current interval overlaps with the 
+            // last merged interval
+            if (arr[resIdx][1] >= arr[i][0])           
+                arr[resIdx][1] = Math.max(arr[resIdx][1], arr[i][1]);
+            
+            // Move to the next interval
+            else {            
+                resIdx++;
+                arr[resIdx] = arr[i];
+            }
+        }
+
+        // Returns size of the merged intervals
+        return (resIdx + 1);
+    }
+}
