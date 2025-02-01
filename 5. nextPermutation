@@ -21,7 +21,7 @@ class Solution {
             if (arr[i] > arr[idx])
             {
                 int tmp = arr[i];
-                arr[i]=arr[idx];
+                arr[i]=arr[idx];//swap the last element with arr[idx]
                 arr[idx] = tmp;
                 break;
             }
