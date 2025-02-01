@@ -1,0 +1,72 @@
+import java.util.HashMap;
+import java.util.Arrays;
+
+class GfG {
+
+    // Function to check if two strings are anagrams
+    static boolean areAnagrams(String s1, String s2) {
+        
+        // Sort both strings
+        char[] s1Array = s1.toCharArray();
+        char[] s2Array = s2.toCharArray();
+        Arrays.sort(s1Array);
+        Arrays.sort(s2Array);
+
+        // Compare sorted strings
+        return Arrays.equals(s1Array, s2Array);
+    }
+    -------------------------
+class GfG {
+    
+    static boolean areAnagrams(String s1, String s2) {
+        
+        // Create a hashmap to store character frequencies
+        HashMap<Character, Integer> charCount = new HashMap<>();
+        
+        // Count frequency of each character in string s1
+        for (char ch : s1.toCharArray()) 
+            charCount.put(ch, charCount.getOrDefault(ch, 0) + 1);
+  
+        // Count frequency of each character in string s2
+        for (char ch : s2.toCharArray()) 
+            charCount.put(ch, charCount.getOrDefault(ch, 0) - 1);
+  
+        // Check if all frequencies are zero
+        for (var pair : charCount.entrySet()) {
+            if (pair.getValue() != 0) {
+                return false;
+            }
+        }
+        
+        // If all conditions satisfied, they are anagrams
+        return true;
+    }
+}
+________________________________________
+class GfG {
+
+    // As the input strings can only have lowercase 
+    // characters, the maximum characters will be 26
+    static final int MAX_CHAR = 26;
+
+    static boolean areAnagrams(String s1, String s2) {
+        int[] freq = new int[MAX_CHAR];
+
+        // Count frequency of each character in string s1
+        for (int i = 0; i < s1.length(); i++)
+            freq[s1.charAt(i) - 'a']++;
+
+        // Count frequency of each character in string s2
+        for (int i = 0; i < s2.length(); i++)
+            freq[s2.charAt(i) - 'a']--;
+
+        // Check if all frequencies are zero
+        for (int count : freq) {
+            if (count != 0)
+                return false;
+        }
+
+        return true;
+    }
+}
+
