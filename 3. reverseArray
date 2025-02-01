@@ -28,7 +28,7 @@ class Solution {
     }
 }
 
-class GfG {
+class Solution {
     static void reverseArray(int[] arr) {
         int n = arr.length;
         
